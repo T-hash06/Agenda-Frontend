@@ -1,15 +1,18 @@
 <template>
 	<div id="main-container">
-		<TitleHeader content="Login"></TitleHeader>
+		<TitleHeader content="Signup"></TitleHeader>
 		<div id="inputs-container">
+			<TextInput placeholder="username" v-model="firstName" width="80"></TextInput>
+			<TextInput placeholder="lastname" v-model="lastName" width="80"></TextInput>
+			<TextInput placeholder="phone" v-model="phone" width="80"></TextInput>
+			<TextInput placeholder="email" v-model="email" width="80"></TextInput>
 			<TextInput placeholder="username" v-model="username" width="80"></TextInput>
-			<TextInput placeholder="password" v-model="password" width="80" password></TextInput>
+			<TextInput placeholder="password" v-model="password" width="80"></TextInput>
 		</div>
 		<div id="buttons-container">
-			<RectButton content="login" width="80" main></RectButton>
-			<RectButton content="signup" width="80" @click="this.$router.push('signup')"></RectButton>
+			<RectButton content="signup" width="80" main></RectButton>
+			<RectButton content="login" width="80"></RectButton>
 		</div>
-		<h1>{{ username }}</h1>
 	</div>
 </template>
 
@@ -21,7 +24,10 @@ import TextInput from "@/components/TextInput.vue";
 export default {
 	data() {
 		return {
-			title: "Hola",
+			firstName: "",
+			lastName: "",
+			phone: "",
+			email: "",
 			username: "",
 			password: "",
 		};
@@ -37,13 +43,10 @@ export default {
 <style scoped>
 #main-container {
 	display: grid;
-	grid-template-rows: 80px 180px auto;
+	grid-template-rows: 80px auto auto;
 
 	width: 100%;
 	height: 100%;
-
-	max-width: 800px;
-	max-height: 800px;
 
 	background-color: #fff;
 }
@@ -55,17 +58,10 @@ export default {
 	align-content: flex-start;
 }
 
-.input-container {
-	width: 80%;
-	height: fit-content;
-}
 #buttons-container {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	align-content: flex-start;
-}
-.button-container {
-	width: 80%;
 }
 </style>

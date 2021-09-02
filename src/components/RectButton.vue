@@ -1,10 +1,10 @@
 <template>
-	<button :class="{ main: main != null }">{{ content }}</button>
+	<button :class="{ main: main != null }" :style="{ width: width + '%' }">{{ content }}</button>
 </template>
 
 <script>
 export default {
-	props: ["content", "main"],
+	props: ["content", "main", "width"],
 	data() {
 		return {};
 	},
@@ -13,7 +13,6 @@ export default {
 
 <style scoped>
 button {
-	width: 100%;
 	height: 55px;
 
 	font-size: 18px;
@@ -24,8 +23,8 @@ button {
 	background-color: #fff;
 	color: #8c00ff;
 
-	outline: 1px #8c00ff solid;
-	border: none;
+	outline: none;
+	border: 1px #8c00ff solid;
 	cursor: pointer;
 }
 button.main {

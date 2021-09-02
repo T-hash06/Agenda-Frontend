@@ -1,26 +1,23 @@
 <template>
-	<div class="text-input-container">
-		<input type="text" v-model="text" :modelValue="text" @update:modelValue="supUpdate" />
+	<div class="text-input-container" :style="{ width: width + '%' }">
+		<input
+			:type="password == null ? 'text' : 'password'"
+			v-model="modelValue"
+			@update:modelValue="$emit('update:modelValue', this.modelValue)"
+		/>
 		<label :class="{ filled: filled }">{{ placeholder }}</label>
 	</div>
 </template>
 
 <script>
 export default {
-	props: ["placeholder", "modelValue"],
+	props: ["placeholder", "modelValue", "width", "password"],
 	data() {
-		return {
-			text: this.modelValue,
-		};
+		return {};
 	},
 	computed: {
 		filled() {
-			return this.text.length != 0;
-		},
-	},
-	methods: {
-		supUpdate() {
-			this.$emit("update:modelValue", this.text);
+			return this.modelValue.length != 0;
 		},
 	},
 };
@@ -48,7 +45,7 @@ export default {
 	border: none;
 	outline: none;
 
-	text-indent: 10px;
+	text-indent: 16px;
 	font-size: 16px;
 	font-family: Nunito;
 }
@@ -56,7 +53,7 @@ export default {
 .text-input-container label {
 	position: absolute;
 
-	left: 12px;
+	left: 18px;
 	top: calc(50% - 9px);
 
 	font-size: 16px;
@@ -68,7 +65,6 @@ export default {
 	transition-duration: 200ms;
 
 	background-color: rgb(255, 255, 255);
-	padding: 0px 6px;
 }
 
 .text-input-container:focus-within label {
@@ -78,6 +74,7 @@ export default {
 	color: #8400ff;
 
 	font-size: 14px;
+	padding: 0px 6px;
 }
 
 .text-input-container label.filled {
@@ -85,5 +82,6 @@ export default {
 	top: -10px;
 
 	font-size: 14px;
+	padding: 0px 6px;
 }
 </style>
