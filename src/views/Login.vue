@@ -1,12 +1,12 @@
 <template>
-	<h1>Hola desde home {{ message }}</h1>
+	<h1>Hola desde login {{ title }}</h1>
 </template>
 
 <script>
 export default {
 	data() {
 		return {
-			message: "Thomas",
+			title: "Hola",
 		};
 	},
 };
