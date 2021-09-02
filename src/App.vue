@@ -1,5 +1,7 @@
 <template>
-	<router-view />
+	<div id="main-div">
+		<router-view />
+	</div>
 </template>
 
 <style>
@@ -33,5 +35,16 @@
 	margin: 0px;
 
 	font-family: Roboto;
+}
+
+#main-div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	width: 100vw;
+	height: 100vh;
+
+	background: linear-gradient(30deg, #161616 50%, #303030 50%);
 }
 </style>
