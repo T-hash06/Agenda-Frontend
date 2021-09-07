@@ -21,8 +21,8 @@ export default {
 	data() {
 		return {
 			title: "Hola",
-			username: "",
-			password: "",
+			username: { content: "" },
+			password: { content: "" },
 		};
 	},
 	components: {

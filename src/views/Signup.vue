@@ -5,9 +5,9 @@
 			<TextInput placeholder="username" v-model="firstName" width="80"></TextInput>
 			<TextInput placeholder="lastname" v-model="lastName" width="80"></TextInput>
 			<TextInput placeholder="phone" v-model="phone" width="80"></TextInput>
-			<TextInput placeholder="email" v-model="email" width="80" email></TextInput>
+			<TextInput placeholder="email" v-model="email" width="80" email validate></TextInput>
 			<TextInput placeholder="username" v-model="username" width="80"></TextInput>
-			<TextInput placeholder="password" v-model="password" width="80" password></TextInput>
+			<TextInput placeholder="password" v-model="password" width="80" password validate></TextInput>
 		</div>
 		<div id="buttons-container">
 			<RectButton content="signup" width="80" main @click="test"></RectButton>

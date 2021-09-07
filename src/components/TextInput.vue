@@ -14,7 +14,7 @@
 
 <script>
 export default {
-	props: ["placeholder", "modelValue", "width", "password", "email"],
+	props: ["placeholder", "modelValue", "width", "password", "email", "validate"],
 	data() {
 		return {};
 	},
@@ -30,14 +30,15 @@ export default {
 
 			let isPassword = this.password != null;
 			let isEmail = this.email != null;
+			let checkValid = this.validate != null;
 
-			if (isPassword && currentContent.length != 0) {
+			if (isPassword && currentContent.length != 0 && checkValid) {
 				if (currentContent.length < 8 || currentContent.toLowerCase() == currentContent || !/\d/.test(currentContent)) {
 					ownErrors.push("Insafety password");
 				}
 			}
 
-			if (isEmail && currentContent.length != 0) {
+			if (isEmail && currentContent.length != 0 && checkValid) {
 				if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(currentContent)) {
 					ownErrors.push("Invalid email");
 				}
