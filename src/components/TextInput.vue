@@ -1,23 +1,49 @@
 <template>
-	<div class="text-input-container" :style="{ width: width + '%' }">
+	<div :class="{ error: errors.length != 0 }" class="text-input-container" :style="{ width: width + '%' }">
 		<input
 			:type="password == null ? 'text' : 'password'"
-			v-model="modelValue"
+			v-model="modelValue.content"
 			@update:modelValue="$emit('update:modelValue', this.modelValue)"
+			@focus="this.modelValue.errors = []"
+			:id="placeholder + '-input'"
 		/>
-		<label :class="{ filled: filled }">{{ placeholder }}</label>
+		<label :class="{ filled: filled }" class="placeholder-label">{{ placeholder }}</label>
+		<label class="error-label" v-if="errors.length != 0" :class="{ filled: filled }">{{ errors.slice(-1)[0] }}</label>
 	</div>
 </template>
 
 <script>
 export default {
-	props: ["placeholder", "modelValue", "width", "password"],
+	props: ["placeholder", "modelValue", "width", "password", "email"],
 	data() {
 		return {};
 	},
 	computed: {
 		filled() {
-			return this.modelValue.length != 0;
+			return this.modelValue.content.length != 0;
+		},
+		errors() {
+			let currentContent = this.modelValue.content;
+
+			let inheritErrors = this.modelValue.errors ? this.modelValue.errors : [];
+			let ownErrors = [];
+
+			let isPassword = this.password != null;
+			let isEmail = this.email != null;
+
+			if (isPassword && currentContent.length != 0) {
+				if (currentContent.length < 8 || currentContent.toLowerCase() == currentContent || !/\d/.test(currentContent)) {
+					ownErrors.push("Insafety password");
+				}
+			}
+
+			if (isEmail && currentContent.length != 0) {
+				if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(currentContent)) {
+					ownErrors.push("Invalid email");
+				}
+			}
+
+			return [...ownErrors, ...inheritErrors];
 		},
 	},
 };
@@ -32,6 +58,12 @@ export default {
 
 	transition-property: all;
 	transition-duration: 50ms;
+}
+.text-input-container.error {
+	outline: 2px solid #bb0020;
+}
+.text-input-container.error:focus-within .error-label {
+	display: none;
 }
 
 .text-input-container:focus-within {
@@ -50,7 +82,15 @@ export default {
 	font-family: Nunito;
 }
 
-.text-input-container label {
+.text-input-container.error input {
+	color: #860016;
+}
+
+.text-input-container.error:focus-within input {
+	color: #000;
+}
+
+.text-input-container .placeholder-label {
 	position: absolute;
 
 	left: 18px;
@@ -67,7 +107,11 @@ export default {
 	background-color: rgb(255, 255, 255);
 }
 
-.text-input-container:focus-within label {
+.text-input-container.error .placeholder-label {
+	color: #bb0020;
+}
+
+.text-input-container:focus-within .placeholder-label {
 	left: 10px;
 	top: -10px;
 
@@ -77,11 +121,39 @@ export default {
 	padding: 0px 6px;
 }
 
-.text-input-container label.filled {
+.text-input-container .placeholder-label.filled {
 	left: 10px;
 	top: -10px;
 
 	font-size: 14px;
 	padding: 0px 6px;
+}
+
+.error-label {
+	position: absolute;
+	left: 2px;
+	top: 102%;
+	font-size: 12px;
+	color: #bb0020;
+
+	animation: 80ms spawn-error;
+}
+
+@keyframes spawn-error {
+	0% {
+		transform: translateX(0px);
+	}
+	25% {
+		transform: translateX(4px);
+	}
+	50% {
+		transform: translateX(0px);
+	}
+	75% {
+		transform: translateX(-4px);
+	}
+	100% {
+		transform: translateX(0px);
+	}
 }
 </style>

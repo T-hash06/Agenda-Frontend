@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div id="header-container">
 		<h1>{{ content }}</h1>
 	</div>
 </template>
@@ -11,19 +11,20 @@ export default {
 </script>
 
 <style scoped>
-div {
+#header-container {
 	display: flex;
 	align-items: center;
 	width: 100%;
 	height: 100%;
 
 	background-color: #8c00ff;
-}
 
-h1 {
+	box-shadow: 0px 2px 6px #8d8d8d;
+}
+#header-container h1 {
 	font-size: 28px;
-	font-family: Roboto;
+	font-family: Roboto-bold;
 	color: white;
-	margin-left: 50px;
+	margin-left: 35px;
 }
 </style>

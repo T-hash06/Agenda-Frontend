@@ -5,12 +5,12 @@
 			<TextInput placeholder="username" v-model="firstName" width="80"></TextInput>
 			<TextInput placeholder="lastname" v-model="lastName" width="80"></TextInput>
 			<TextInput placeholder="phone" v-model="phone" width="80"></TextInput>
-			<TextInput placeholder="email" v-model="email" width="80"></TextInput>
+			<TextInput placeholder="email" v-model="email" width="80" email></TextInput>
 			<TextInput placeholder="username" v-model="username" width="80"></TextInput>
-			<TextInput placeholder="password" v-model="password" width="80"></TextInput>
+			<TextInput placeholder="password" v-model="password" width="80" password></TextInput>
 		</div>
 		<div id="buttons-container">
-			<RectButton content="signup" width="80" main></RectButton>
+			<RectButton content="signup" width="80" main @click="test"></RectButton>
 			<RectButton content="login" width="80" @click="this.$router.push('login')"></RectButton>
 		</div>
 	</div>
@@ -24,18 +24,23 @@ import TextInput from "@/components/TextInput.vue";
 export default {
 	data() {
 		return {
-			firstName: "",
-			lastName: "",
-			phone: "",
-			email: "",
-			username: "",
-			password: "",
+			firstName: { content: "" },
+			lastName: { content: "" },
+			phone: { content: "" },
+			email: { content: "" },
+			username: { content: "" },
+			password: { content: "" },
 		};
 	},
 	components: {
 		RectButton,
 		TitleHeader,
 		TextInput,
+	},
+	methods: {
+		test() {
+			this.firstName.errors = ["testerror"];
+		},
 	},
 };
 </script>
