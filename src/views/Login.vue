@@ -9,7 +9,6 @@
 			<RectButton content="login" width="80" main></RectButton>
 			<RectButton content="signup" width="80" @click="this.$router.push('signup')"></RectButton>
 		</div>
-		<h1>{{ username }}</h1>
 	</div>
 </template>
 

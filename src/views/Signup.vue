@@ -11,7 +11,7 @@
 		</div>
 		<div id="buttons-container">
 			<RectButton content="signup" width="80" main></RectButton>
-			<RectButton content="login" width="80"></RectButton>
+			<RectButton content="login" width="80" @click="this.$router.push('login')"></RectButton>
 		</div>
 	</div>
 </template>

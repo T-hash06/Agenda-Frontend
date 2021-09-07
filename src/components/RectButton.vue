@@ -20,7 +20,7 @@ button {
 
 	margin-top: 15px;
 
-	background-color: #fff;
+	background-color: transparent;
 	color: #8c00ff;
 
 	outline: none;
