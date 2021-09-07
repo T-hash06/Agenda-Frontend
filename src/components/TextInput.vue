@@ -44,6 +44,8 @@ export default {
 				}
 			}
 
+			this.modelValue.errorCount = [...ownErrors, ...inheritErrors].length;
+
 			return [...ownErrors, ...inheritErrors];
 		},
 	},
@@ -132,7 +134,7 @@ export default {
 
 .error-label {
 	position: absolute;
-	left: 2px;
+	left: 14px;
 	top: 102%;
 	font-size: 12px;
 	color: #bb0020;
