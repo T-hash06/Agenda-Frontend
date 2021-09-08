@@ -21,6 +21,18 @@ export default createStore({
 				return { error: error.response, response: null };
 			}
 		},
+		async loginUser(context, { username, password }) {
+			try {
+				const res = await axios.post("/api/auth/user", {
+					username,
+					password,
+				});
+
+				return { error: null, response: res };
+			} catch (error) {
+				return { error: error.response, response: null };
+			}
+		},
 	},
 	modules: {},
 });
