@@ -18,7 +18,8 @@ button {
 	font-size: 18px;
 	text-transform: capitalize;
 
-	margin-top: 15px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 
 	background-color: transparent;
 	color: #8c00ff;

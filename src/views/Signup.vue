@@ -26,12 +26,12 @@ import { mapActions } from "vuex";
 export default {
 	data() {
 		return {
-			firstName: { content: "tomas" },
-			lastName: { content: "panqueva" },
-			phone: { content: "3214016080" },
-			email: { content: "tomas@gmail.com" },
-			username: { content: "FighterDs01" },
-			password: { content: "Tomaspanqueva1" },
+			firstName: { content: "" },
+			lastName: { content: "" },
+			phone: { content: "" },
+			email: { content: "" },
+			username: { content: "" },
+			password: { content: "" },
 		};
 	},
 	components: {
@@ -101,11 +101,8 @@ export default {
 	grid-template-rows: 80px auto auto;
 
 	width: 100%;
-	max-width: 800px;
-	max-height: 900px;
 	height: 100%;
-
-	overflow: hidden;
+	overflow-x: hidden;
 
 	background-color: #fff;
 }
@@ -122,5 +119,12 @@ export default {
 	flex-wrap: wrap;
 	justify-content: center;
 	align-content: flex-start;
+}
+
+@media screen and (min-width: 815px) {
+	#main-container {
+		width: 650px;
+		height: 850px;
+	}
 }
 </style>

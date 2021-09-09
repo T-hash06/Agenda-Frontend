@@ -2,7 +2,9 @@
 	<div id="main-container">
 		<h1>404</h1>
 		<h3>It looks like you are lost</h3>
-		<RectButton content="Go to home page" width="80" main @click="this.$router.push('/')"></RectButton>
+		<div id="button-container">
+			<RectButton content="Go to home page" width="100" main @click="this.$router.push('/')"></RectButton>
+		</div>
 	</div>
 </template>
 
@@ -44,5 +46,10 @@ h3 {
 	margin: 20px 0px;
 	width: 100%;
 	text-align: center;
+}
+
+#button-container {
+	width: 80%;
+	max-width: 420px;
 }
 </style>

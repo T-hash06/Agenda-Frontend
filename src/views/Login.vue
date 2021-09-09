@@ -80,8 +80,6 @@ export default {
 	width: 100%;
 	height: 100%;
 
-	max-width: 800px;
-
 	background-color: #fff;
 }
 
@@ -104,5 +102,13 @@ export default {
 }
 .button-container {
 	width: 80%;
+}
+
+@media screen and (min-width: 815px) {
+	#main-container {
+		width: 650px;
+		height: 600px;
+		overflow: hidden;
+	}
 }
 </style>

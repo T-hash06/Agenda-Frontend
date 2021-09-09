@@ -3,6 +3,13 @@ import { createRouter, createWebHistory } from "vue-router";
 const routes = [
 	{
 		path: "/",
+		name: "AliasHome",
+		redirect: (to) => {
+			return { path: "/home" };
+		},
+	},
+	{
+		path: "/home",
 		name: "Home",
 		component: () => import(/* webpackChunkName: "Home" */ "../views/Home.vue"),
 	},
