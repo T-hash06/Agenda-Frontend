@@ -1,6 +1,9 @@
 <template>
-	<div id="main-container">
-		<h1>Hola desde home {{ userData.firstName }}</h1>
+	<div id="main-home-container">
+		<div id="view-container">
+			<router-view></router-view>
+		</div>
+		<div id="button-navbar"></div>
 	</div>
 </template>
 
@@ -15,7 +18,7 @@ export default {
 		...mapState(["userData"]),
 	},
 	methods: {
-		...mapActions(["getUserData"]),
+		...mapActions(["getUserData", "getUserNotes"]),
 	},
 	async created() {
 		const res = await this.getUserData();
@@ -27,16 +30,33 @@ export default {
 				}
 			}
 		}
+
+		const notes = await this.getUserNotes();
 	},
 };
 </script>
 
 <style scoped>
-#main-container {
+#main-home-container {
+	width: 100%;
+	height: 100%;
+	display: grid;
+	grid-template-rows: auto 80px;
+}
+#view-container {
 	width: 100%;
 	height: 100%;
 
-	background-color: #fff;
+	background-color: #f7f7f7;
 	color: #383838;
+	overflow-y: auto;
+}
+
+#button-navbar {
+	height: 100%;
+	background-color: #6200ee;
+
+	bottom: 0px;
+	left: 0px;
 }
 </style>

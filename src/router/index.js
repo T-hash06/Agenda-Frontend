@@ -12,6 +12,30 @@ const routes = [
 		path: "/home",
 		name: "Home",
 		component: () => import(/* webpackChunkName: "Home" */ "../views/Home.vue"),
+		children: [
+			{
+				path: "",
+				name: "AliasNotes",
+				redirect: (to) => {
+					return { path: "/home/notes" };
+				},
+			},
+			{
+				path: "notes",
+				name: "Notes",
+				component: () => import(/* webpackChunkName: "Notes" */ "../views/home/Notes.vue"),
+			},
+			{
+				path: "contacts",
+				name: "Contacts",
+				component: () => import(/* webpackChunkName: "Contacts" */ "../views/home/Contacts.vue"),
+			},
+			{
+				path: "profile",
+				name: "Profile",
+				component: () => import(/* webpackChunkName: "Profile" */ "../views/home/Profile.vue"),
+			},
+		],
 	},
 	{
 		path: "/login",

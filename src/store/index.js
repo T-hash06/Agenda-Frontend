@@ -11,11 +11,14 @@ export default createStore({
 			username: "",
 			password: "",
 		},
+		userNotes: {},
 	},
 	mutations: {
 		setUserData(state, { firstName, lastName, phone, email, username, password }) {
 			state.userData = { firstName, lastName, phone, email, username, password };
-			console.log(state.userData);
+		},
+		setUserNotes(state, { notes }) {
+			state.userNotes = notes;
 		},
 	},
 	actions: {
@@ -52,6 +55,16 @@ export default createStore({
 				const res = await axios.get("/api/user");
 
 				context.commit("setUserData", res.data);
+				return { error: null, response: res };
+			} catch (error) {
+				return { error: error.response, response: null };
+			}
+		},
+		async getUserNotes(context) {
+			try {
+				const res = await axios.get("/api/user/notes");
+				context.commit("setUserNotes", { notes: res.data });
+
 				return { error: null, response: res };
 			} catch (error) {
 				return { error: error.response, response: null };
